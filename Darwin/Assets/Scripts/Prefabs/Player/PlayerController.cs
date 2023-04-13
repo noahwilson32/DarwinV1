@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
         {
             if (yAxis == 0)
             {
-                movement = new Vector3(xAxis, 0, zAxis).normalized;
+                movement = transform.right * xAxis + transform.forward * zAxis;
             }
             else
             {
@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
         }
         else 
         {
-            movement = new Vector3(myRigidbody.velocity.x, 0, myRigidbody.velocity.z).normalized;
+            movement = movement = transform.right * xAxis + transform.forward * zAxis;
         }
     }
 

@@ -311,6 +311,7 @@ GameObject:
   - component: {fileID: 860338852}
   - component: {fileID: 860338851}
   - component: {fileID: 860338850}
+  - component: {fileID: 860338853}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -384,6 +385,20 @@ Transform:
   m_Father: {fileID: 859844681}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &860338853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860338849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ae91c778b055764ba01f8d7f5c721be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseSensitivity: 100
+  playerBody: {fileID: 941012698}
 --- !u!1 &941012696
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,7 +410,6 @@ GameObject:
   - component: {fileID: 941012698}
   - component: {fileID: 941012697}
   - component: {fileID: 941012699}
-  - component: {fileID: 941012700}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -453,21 +467,6 @@ MonoBehaviour:
   jumpForce: 20
   walkSpeed: 50
   sprintSpeed: 75
---- !u!114 &941012700
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 941012696}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ae91c778b055764ba01f8d7f5c721be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turnSpeed: 4
-  minTurnAngle: -90
-  maxTurnAngle: 90
 --- !u!1 &2012084989
 GameObject:
   m_ObjectHideFlags: 0

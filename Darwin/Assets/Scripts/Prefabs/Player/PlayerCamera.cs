@@ -4,37 +4,31 @@ using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour
 {
-    private float y;
-    private float rotX;
+    public float mouseSensitivity = 100f;
 
-    public float turnSpeed = 4f;
+    public Transform playerBody;
 
-    public float minTurnAngle = -90f;
-    public float maxTurnAngle = 90f;
+    float xRotation = 0f;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
     void Update()
     {
-        y = Input.GetAxis("Mouse X") * turnSpeed;
-        rotX = Input.GetAxis("Mouse Y") * turnSpeed;
+        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
-        rotX = Mathf.Clamp(rotX, minTurnAngle, maxTurnAngle);
-    }
-    void FixedUpdate()
-    {
-        MouseAiming();
+        xRotation -= mouseY;
+        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+
+        transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        playerBody.Rotate(Vector3.up * mouseX);
     }
 
-    public void MouseAiming() 
-    {
-        this.transform.eulerAngles = new Vector3(-rotX, transform.eulerAngles.y + y, 0);
-        this.transform.Find("Capsule").transform.Find("Main Camera").transform.eulerAngles = new Vector3(-rotX, transform.eulerAngles.y + y, 0);
-    }
 }
