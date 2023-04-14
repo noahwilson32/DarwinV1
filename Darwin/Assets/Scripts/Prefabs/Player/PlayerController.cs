@@ -13,7 +13,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private Vector3 movement;
 
-    public float jumpForce = 7f;
+    public float jumpForce;
+
+    public float gravity = -9.81f;
 
     public float walkSpeed = 100f;
 
@@ -38,24 +40,25 @@ public class PlayerController : MonoBehaviour
         //Debug.Log(yAxis);
         if (isGrounded)
         {
-            if (yAxis == 0)
+            if (yAxis <= 0.1f)
             {
                 movement = transform.right * xAxis + transform.forward * zAxis;
+                movement.y = 0;
             }
             else
             {
-                movement = new Vector3(xAxis, (yAxis * jumpForce), zAxis).normalized;
+                movement.y = Mathf.Sqrt(jumpForce * -2f * gravity);
             }
         }
         else 
         {
-            movement = movement = transform.right * xAxis + transform.forward * zAxis;
+            movement.y += gravity * Time.deltaTime;
         }
     }
 
     void FixedUpdate()
     {
-        InitGravit();
+        //InitGravit();
         MovePlayer(movement);
     }
 
